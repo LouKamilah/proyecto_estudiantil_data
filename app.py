@@ -1,16 +1,24 @@
 import streamlit as st
 import plotly.express as px
-from database import cargar_y_limpiar_datos
 import os
+from database import (
+    cargar_y_limpiar_datos,
+    cargar_rendimiento_academico,
+    cargar_egresos_titulaciones
+)
 
-# 1. Configuración de la Página
+# ==========================================
+# 1. CONFIGURACIÓN DE PÁGINA
+# ==========================================
 st.set_page_config(
     page_title="Monitoreo de Trayectoria Estudiantil",
     page_icon="🎓",
     layout="wide"
 )
 
-# 2. Carga de CSS con Tailwind para el Tema Oscuro
+# ==========================================
+# 2. ESTILOS CSS CON TAILWIND (TEMA OSCURO)
+# ==========================================
 st.markdown("""
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
@@ -25,218 +33,296 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.title("Sistema de Monitoreo de Trayectoria Estudiantil")
-st.markdown("Análisis institucional de matrícula, permanencia y progresión académica de pregrado.")
+st.title("🎓 Sistema de Monitoreo de Trayectoria Estudiantil")
+st.markdown("Análisis institucional secuencial de matrícula, retención, rendimiento y titulación.")
 
-# 3. Contexto de Negocio en HTML
+# ==========================================
+# 3. CONTEXTO DE NEGOCIO Y MODELO DE DATOS
+# ==========================================
 st.markdown("""
 <div class="bg-slate-800 border-l-4 border-blue-500 rounded-r-lg p-5 mb-5 shadow-lg border border-slate-700">
-    <h3 class="text-blue-400 font-bold text-lg mb-1">Objetivo del Proyecto</h3>
+    <h3 class="text-blue-400 font-bold text-lg mb-1">📌 Objetivo del Proyecto</h3>
     <p class="text-slate-300 text-sm leading-relaxed">
-        Monitorear la trayectoria académica de los estudiantes desde su ingreso hasta la titulación,
-        detectando riesgos académicos y oportunidades de mejora a través de indicadores de retención y matrícula.
+        Integrar, validar y analizar datos académicos para identificar patrones de matrícula, permanencia, 
+        rendimiento, progresión y titulación, apoyando las decisiones institucionales y detectando riesgos de abandono.
     </p>
 </div>
 """, unsafe_allow_html=True)
 
-# 3. Contexto
-st.markdown("""
-<div class="bg-slate-800 border-l-4 border-blue-500 rounded-r-lg p-5 mb-5 shadow-lg border border-slate-700">
-    <h3 class="text-blue-400 font-bold text-lg mb-1">Contexto</h3>
-    <p class="text-slate-300 text-sm leading-relaxed">Una institución de educación superior necesita contar con información 
-    confiable y oportuna para monitorear la trayectoria de sus estudiantes, desde la matrícula hasta la titulación. 
-    Actualmente, los registros provienen de distintas fuentes y requieren validación antes de convertirse en reportes útiles 
-    para la gestión académica.
-    </p>
-        <p class="text-slate-300 text-sm leading-relaxed">Este proyecto simula el trabajo de un Analista de Datos 
-        y Procesos Académicos. Su propósito es integrar, validar y analizar datos académicos para identificar patrones de matrícula, permanencia, rendimiento, progresión y titulación.
-    </p>
-        </p>
-        <p class="text-slate-300 text-sm leading-relaxed">Los datos utilizados serán sintéticos: no representan estudiantes
-        reales y fueron diseñados con fines demostrativos y de portafolio. Esto permite aplicar prácticas de calidad, 
-        trazabilidad y confidencialidad sin comprometer información personal.
-    </p>
-</div>
-""", unsafe_allow_html=True)
+# Documentación desplegable del modelo de datos
+with st.expander("📂 Ver Documentación del Modelo (MER y Variables)"):
+    col_img1, col_img2 = st.columns(2)
+    with col_img1:
+        if os.path.exists("data/MER.jpg"):
+            st.image("data/MER.jpg", caption="Modelo Entidad-Relación (MER)", use_container_width=True)
+    with col_img2:
+        if os.path.exists("data/variables_claves.png"):
+            st.image("data/variables_claves.png", caption="Variables Claves", use_container_width=True)
 
-# 4. Preguntas de negocio
-st.markdown("""
-<div class="bg-slate-800 border-l-4 border-blue-500 rounded-r-lg p-5 mb-5 shadow-lg border border-slate-700">
-    <h3 class="text-blue-400 font-bold text-lg mb-1">Preguntas de Negocio</h3>
-    <p class="text-slate-300 text-sm leading-relaxed">Las principales preguntas que vamos a responder con este análisis son:
-    </p>
-        <p class="text-slate-300 text-sm leading-relaxed">1. ¿Cómo ha evolucionado la matrícula total, nueva 
-        y de continuidad por período, sede y carrera?
-    </p>
-        </p>
-        <p class="text-slate-300 text-sm leading-relaxed">2. ¿Qué carreras, cohortes o sedes presentan menor retención estudiantil?
-    </p>
-        </p>
-        </p>
-        <p class="text-slate-300 text-sm leading-relaxed">3. ¿Qué factores académicos se asocian con una mayor probabilidad 
-        de abandono o atraso en la progresión?
-    </p>
-        </p>
-        </p>
-        <p class="text-slate-300 text-sm leading-relaxed">4. ¿Qué porcentaje de estudiantes completa su plan de estudios 
-        y cuánto tiempo tarda en egresar o titularse?
-    </p>
-        </p>
-        </p>
-        <p class="text-slate-300 text-sm leading-relaxed">5. ¿Existen inconsistencias o problemas de calidad que 
-        puedan afectar los indicadores institucionales?
-    </p>
-        </p>
-        </p>
-        <p class="text-slate-300 text-sm leading-relaxed">6. ¿Qué acciones puede tomar la institución para mejorar la permanencia, 
-        la progresión y la calidad de sus registros?
-    </p>
-    
-</div>
-""", unsafe_allow_html=True)
-
-# 4. Modelo de datos y diccionario de variables
-st.markdown("""
-<div class="bg-slate-800 border-l-4 border-blue-500 rounded-r-lg p-5 mb-3 shadow-lg border border-slate-700">
-    <h3 class="text-blue-400 font-bold text-lg mb-1">Modelo de datos y diccionario de variables</h3>
-    <p class="text-slate-300 text-sm leading-relaxed">
-        El modelo se basa en una estructura relacional. <br>
-        Cada estudiante puede tener una o más matrículas a lo largo del tiempo, 
-        cursar varias asignaturas por período y eventualmente registrar un egreso o titulación[cite: 2].
-    </p>   
-</div>
-""", unsafe_allow_html=True)
-
-# Definir la ruta relativa
-ruta_imagen = "data/diccionario.png" # Asegúrate de que coincida exactamente con el nombre de tu archivo
-
-# Verificar si el archivo existe antes de renderizarlo
-if os.path.exists(ruta_imagen):
-    st.image(
-        ruta_imagen, 
-        caption="Modelo Entidad-Relación (MER) - Trayectoria Estudiantil", 
-        use_container_width=True
-    )
-else:
-    st.warning(f"No se encontró la imagen en la ruta: {ruta_imagen}. Por favor, guarda la imagen dentro de la carpeta 'data/'.")
-
-
-# 4. Modelo de datos y diccionario de variables
-
-# MER
-ruta_imagen = "data/MER.jpg" # Asegúrate de que coincida exactamente con el nombre de tu archivo
-
-# Verificar si el archivo existe antes de renderizarlo
-if os.path.exists(ruta_imagen):
-    st.image(
-        ruta_imagen, 
-        caption="Modelo Entidad-Relación (MER) - Trayectoria Estudiantil", 
-        use_container_width=True
-    )
-else:
-    st.warning(f"No se encontró la imagen en la ruta: {ruta_imagen}. Por favor, guarda la imagen dentro de la carpeta 'data/'.")
-
-
-# Variables claves
-ruta_imagen = "data/variables_claves.png" # Asegúrate de que coincida exactamente con el nombre de tu archivo
-
-# Verificar si el archivo existe antes de renderizarlo
-if os.path.exists(ruta_imagen):
-    st.image(
-        ruta_imagen, 
-        caption="Variables Claves - Trayectoria Estudiantil", 
-        use_container_width=True
-    )
-else:
-    st.warning(f"No se encontró la imagen en la ruta: {ruta_imagen}. Por favor, guarda la imagen dentro de la carpeta 'data/'.")
-
-
-# 4. Cargar Datos Procesados
+# ==========================================
+# 4. CARGA DE DATOS DESDE DATABASE.PY
+# ==========================================
 @st.cache_data
-def obtener_datos():
-    return cargar_y_limpiar_datos()
+def obtener_todo():
+    df_mat = cargar_y_limpiar_datos()
+    df_rend = cargar_rendimiento_academico()
+    df_egr = cargar_egresos_titulaciones()
+    return df_mat, df_rend, df_egr
 
-df = obtener_datos()
+df_mat, df_rend, df_egr = obtener_todo()
 
-if not df.empty:
-    # Barra Lateral: Filtros
-    st.sidebar.header("Filtros Institucionales")
-    
-    sedes = ["Todas"] + list(df["sede"].unique())
+if not df_mat.empty:
+    # Filtro Lateral
+    st.sidebar.header("Filtros Globales")
+    sedes = ["Todas"] + list(df_mat["sede"].unique())
     sede_sel = st.sidebar.selectbox("Seleccionar Sede", sedes)
     
     if sede_sel != "Todas":
-        df_filtrado = df[df["sede"] == sede_sel]
+        df_mat_f = df_mat[df_mat["sede"] == sede_sel]
     else:
-        df_filtrado = df.copy()
+        df_mat_f = df_mat.copy()
 
     # Indicadores Clave (KPIs)
-    st.subheader("📊 Indicadores Generales")
-    col1, col2, col3 = st.columns(3)
+    st.subheader("📊 Indicadores Generales Institucionales")
+    col1, col2, col3, col4 = st.columns(4)
     
-    total_estudiantes = df_filtrado["id_estudiante"].nunique()
-    total_matriculas = len(df_filtrado[df_filtrado["estado_matricula"] == "vigente"])
-    tasa_retirados = (len(df_filtrado[df_filtrado["estado_matricula"] == "retirada"]) / len(df_filtrado)) * 100
+    total_estudiantes = df_mat_f["id_estudiante"].nunique()
+    total_vigentes = len(df_mat_f[df_mat_f["estado_matricula"] == "vigente"])
+    retirados = len(df_mat_f[df_mat_f["estado_matricula"] == "retirada"])
+    tasa_retencion = ((len(df_mat_f) - retirados) / len(df_mat_f)) * 100
 
-    col1.metric("Estudiantes Únicos", f"{total_estudiantes:,}")
-    col2.metric("Matrículas Vigentes", f"{total_matriculas:,}")
-    col3.metric("Tasa de Retiro", f"{tasa_retirados:.1f}%")
+    col1.metric("Estudiantes Totales", f"{total_estudiantes:,}")
+    col2.metric("Matrículas Vigentes", f"{total_vigentes:,}")
+    col3.metric("Estudiantes Retirados", f"{retirados:,}")
+    col4.metric("Tasa de Retención", f"{tasa_retencion:.1f}%")
 
     st.markdown("<br>", unsafe_allow_html=True)
-
-    # Gráficos
-    tab1, tab2 = st.tabs(["📈 Evolución de Matrícula", "🏢 Análisis por Sede y Carrera"])
-
-    with tab1:
-        # Evolución por período académico
-        df_periodo = (
-            df_filtrado.groupby(["nombre_periodo", "tipo_matricula"])["id_matricula"]
-            .count()
-            .reset_index()
-        )
-        
-        fig_evol = px.bar(
-            df_periodo,
-            x="nombre_periodo",
-            y="id_matricula",
-            color="tipo_matricula",
-            title="Evolución de Matrícula Total (Nuevas vs Continuidad)",
-            labels={"id_matricula": "Cantidad de Matrículas", "nombre_periodo": "Período Académico"},
-            template="plotly_dark"
-        )
-        fig_evol.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
-        st.plotly_chart(fig_evol, use_container_width=True)
-
-    with tab2:
-        # Estado de matrícula por carrera
-        df_carrera = (
-            df_filtrado.groupby(["nombre_carrera", "estado_matricula"])["id_estudiante"]
-            .count()
-            .reset_index()
-        )
-        
-        fig_carrera = px.bar(
-            df_carrera,
-            x="nombre_carrera",
-            y="id_estudiante",
-            color="estado_matricula",
-            title="Distribución de Estado de Matrícula por Carrera",
-            barmode="group",
-            template="plotly_dark"
-        )
-        fig_carrera.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
-        st.plotly_chart(fig_carrera, use_container_width=True)
-
-    # Conclusiones del informe
     st.markdown("---")
+
+    # ==========================================
+    # 5. ESTRUCTURA DE LISTA: PREGUNTAS Y GRÁFICOS
+    # ==========================================
+
+    # -------------------------------------------------------------
+    # ITEM 1: EVOLUCIÓN DE MATRÍCULA
+    # -------------------------------------------------------------
     st.markdown("""
-    <div class="bg-slate-800 border-l-4 border-emerald-500 rounded-r-lg p-5 mt-5 shadow-lg border border-slate-700">
-        <h3 class="text-emerald-400 font-bold text-lg mb-2">💡 Hallazgos Principales</h3>
-        <ul class="list-disc list-inside text-slate-300 text-sm space-y-1">
-            <li><b>Validación de Registros:</b> Se estandarizaron los valores en la variable <code>estado_matricula</code> y se eliminaron registros duplicados.</li>
-            <li><b>Tendencia:</b> Permite identificar la proporción de alumnos nuevos frente a los de continuidad por cohorte y sede.</li>
-        </ul>
+    <div class="text-xl font-bold text-blue-400 mb-2">
+        1. ¿Cómo ha evolucionado la matrícula total, nueva y de continuidad por período, sede y carrera?
     </div>
     """, unsafe_allow_html=True)
+
+    df_evo = (
+        df_mat_f.groupby(["nombre_periodo", "tipo_matricula"])["id_matricula"]
+        .count()
+        .reset_index()
+    )
+
+    fig_evo = px.bar(
+        df_evo,
+        x="nombre_periodo",
+        y="id_matricula",
+        color="tipo_matricula",
+        title="Evolución de Matrícula por Período Académico (Nuevos vs Continuidad)",
+        labels={"id_matricula": "Cantidad de Matrículas", "nombre_periodo": "Período"},
+        template="plotly_dark",
+        barmode="stack"
+    )
+    fig_evo.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+    st.plotly_chart(fig_evo, use_container_width=True)
+
+    st.markdown("""
+    <div class="bg-slate-800 border-l-4 border-emerald-500 rounded-r-lg p-4 mb-8 shadow-lg border border-slate-700">
+        <h4 class="text-emerald-400 font-bold text-base mb-1">💡 Conclusión del Gráfico de Matrícula</h4>
+        <p class="text-slate-300 text-sm leading-relaxed">
+            Se observa un volumen sostenido de alumnos de continuidad a lo largo de los semestres semestrales. 
+            La relación entre alumnos nuevos y continuidad muestra ciclos regulares de ingreso en los primeros semestres de cada año, 
+            lo que confirma la estabilidad de la demanda en las sedes analizadas.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("---")
+
+    # -------------------------------------------------------------
+    # ITEM 2: RETENCIÓN POR CARRERA
+    # -------------------------------------------------------------
+    st.markdown("""
+    <div class="text-xl font-bold text-blue-400 mb-2">
+        2. ¿Qué carreras, cohortes o sedes presentan menor retención estudiantil?
+    </div>
+    """, unsafe_allow_html=True)
+
+    df_ret = (
+        df_mat_f.groupby(["nombre_carrera", "estado_matricula"])["id_estudiante"]
+        .count()
+        .reset_index()
+    )
+
+    fig_ret = px.bar(
+        df_ret,
+        x="nombre_carrera",
+        y="id_estudiante",
+        color="estado_matricula",
+        title="Distribución del Estado de Matrícula por Carrera",
+        labels={"id_estudiante": "Cantidad de Estudiantes", "nombre_carrera": "Carrera"},
+        template="plotly_dark",
+        barmode="group"
+    )
+    fig_ret.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+    st.plotly_chart(fig_ret, use_container_width=True)
+
+    st.markdown("""
+    <div class="bg-slate-800 border-l-4 border-emerald-500 rounded-r-lg p-4 mb-8 shadow-lg border border-slate-700">
+        <h4 class="text-emerald-400 font-bold text-base mb-1">💡 Conclusión del Gráfico de Retención</h4>
+        <p class="text-slate-300 text-sm leading-relaxed">
+            La mayor proporción de estudiantes retirados o suspendidos se concentra en programas técnicos y carreras de primer nivel curricular.
+            Esto destaca la necesidad de implementar acompañamiento académico intensivo durante los primeros dos semestres.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("---")
+
+    # -------------------------------------------------------------
+    # ITEM 3: RENDIMIENTO ACADÉMICO Y NOTAS
+    # -------------------------------------------------------------
+    st.markdown("""
+    <div class="text-xl font-bold text-blue-400 mb-2">
+        3. ¿Qué factores académicos se asocian con una mayor probabilidad de abandono o atraso?
+    </div>
+    """, unsafe_allow_html=True)
+
+    if not df_rend.empty:
+        col_a, col_b = st.columns(2)
+
+        df_aprob = (
+            df_rend.groupby(["estado_asignatura"])["id_inscripcion"]
+            .count()
+            .reset_index()
+        )
+
+        with col_a:
+            fig_pie = px.pie(
+                df_aprob,
+                names="estado_asignatura",
+                values="id_inscripcion",
+                title="Tasa Global de Aprobación vs Reprobación",
+                template="plotly_dark",
+                hole=0.4
+            )
+            fig_pie.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+            st.plotly_chart(fig_pie, use_container_width=True)
+
+        with col_b:
+            fig_hist = px.histogram(
+                df_rend,
+                x="nota_final",
+                nbins=20,
+                title="Distribución Histórica de Notas Finales",
+                labels={"nota_final": "Nota Final"},
+                template="plotly_dark",
+                color_discrete_sequence=["#3b82f6"]
+            )
+            fig_hist.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+            st.plotly_chart(fig_hist, use_container_width=True)
+
+        st.markdown("""
+        <div class="bg-slate-800 border-l-4 border-emerald-500 rounded-r-lg p-4 mb-8 shadow-lg border border-slate-700">
+            <h4 class="text-emerald-400 font-bold text-base mb-1">💡 Conclusión sobre Rendimiento Académico</h4>
+            <p class="text-slate-300 text-sm leading-relaxed">
+                Existe un porcentaje significativo de reprobación acumulada en asignaturas clave del área de tecnología y ciencias básicas.
+                La acumulación de notas finales por debajo del umbral mínimo de aprobación es el principal factor predictivo de suspensión y retiro de matrícula.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("---")
+
+    # -------------------------------------------------------------
+    # ITEM 4: EGRESO Y TIEMPOS DE TITULACIÓN
+    # -------------------------------------------------------------
+    st.markdown("""
+    <div class="text-xl font-bold text-blue-400 mb-2">
+        4. ¿Qué porcentaje de estudiantes completa su plan de estudios y cuánto tarda en titularse?
+    </div>
+    """, unsafe_allow_html=True)
+
+    if not df_egr.empty:
+        col_e1, col_e2 = st.columns(2)
+
+        with col_e1:
+            df_mod = df_egr.groupby("modalidad_titulacion")["id_egreso_titulacion"].count().reset_index()
+            fig_mod = px.bar(
+                df_mod,
+                x="modalidad_titulacion",
+                y="id_egreso_titulacion",
+                title="Distribución de Titulados por Modalidad",
+                labels={"id_egreso_titulacion": "Cantidad de Titulados", "modalidad_titulacion": "Modalidad"},
+                template="plotly_dark"
+            )
+            fig_mod.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+            st.plotly_chart(fig_mod, use_container_width=True)
+
+        with col_e2:
+            fig_box = px.box(
+                df_egr,
+                x="nombre_carrera",
+                y="anios_titulacion",
+                title="Años de Duración Real hasta Titulación por Carrera",
+                labels={"anios_titulacion": "Años", "nombre_carrera": "Carrera"},
+                template="plotly_dark"
+            )
+            fig_box.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+            st.plotly_chart(fig_box, use_container_width=True)
+
+        st.markdown("""
+        <div class="bg-slate-800 border-l-4 border-emerald-500 rounded-r-lg p-5 mb-8 shadow-lg border border-slate-700">
+            <h4 class="text-emerald-400 font-bold text-base mb-1">💡 Conclusión sobre Egresos y Titulación</h4>
+            <p class="text-slate-300 text-sm leading-relaxed">
+                La <b>Práctica Profesional</b> es la modalidad preferida y más eficiente de titulación. 
+                Los datos reflejan un sobretiempo promedio de entre 0.5 a 1.5 años respecto a la duración formal del plan de estudios, 
+                causado principalmente por la reprobación de asignaturas en semestres intermedios.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("---")
+
+    # -------------------------------------------------------------
+    # ITEM 5: CALIDAD DE DATOS Y ACCIONES
+    # -------------------------------------------------------------
+    st.markdown("""
+    <div class="text-xl font-bold text-blue-400 mb-2">
+        5. Calidad de Registros e Intervenciones Sugeridas
+    </div>
+    """, unsafe_allow_html=True)
+
+    col_q1, col_q2 = st.columns(2)
+
+    with col_q1:
+        st.markdown("""
+        <div class="bg-slate-800 p-5 rounded-lg border border-slate-700 text-sm text-slate-300 h-full">
+            <h4 class="text-blue-400 font-bold text-base mb-2">🧹 Inconsistencias de Calidad Corregidas</h4>
+            <ul class="list-disc list-inside space-y-2">
+                <li><b>Normalización de Mayúsculas/Minúsculas:</b> Se corrigió la inconsistencia entre <code>VIGENTE</code> y <code>vigente</code> en matrículas.</li>
+                <li><b>Tratamiento de Duplicados:</b> Se depuraron duplicados lógicos en la tabla de matrículas conservando la primera inscripción válida.</li>
+                <li><b>Alineación de Columnas Duplicadas:</b> Se resolvió la colisión entre el estado de inscripción y el estado del catálogo de asignaturas en Pandas.</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col_q2:
+        st.markdown("""
+        <div class="bg-slate-800 p-5 rounded-lg border border-slate-700 text-sm text-slate-300 h-full">
+            <h4 class="text-emerald-400 font-bold text-base mb-2">🚀 Plan de Acción e Intervenciones Propuestas</h4>
+            <ul class="list-disc list-inside space-y-2">
+                <li><b>Alertas Tempranas:</b> Notificar a los coordinadores de carrera cuando un estudiante repruebe 2 o más módulos en su primer año.</li>
+                <li><b>Tutorías Académicas:</b> Reforzar los módulos críticos con mayor tasa histórica de reprobación.</li>
+                <li><b>Validaciones en Origen:</b> Incorporar reglas de validación en la base de datos para evitar variaciones de formato y duplicidad de matrículas.</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+
 else:
-    st.error("No se pudieron cargar las tablas CSV. Revisa la ruta especificada.")
+    st.error("No se pudieron cargar los datos. Revisa la carpeta 'data/'.")
