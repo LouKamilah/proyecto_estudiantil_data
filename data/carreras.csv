@@ -1,0 +1,7 @@
+id_carrera,nombre_carrera,facultad,sede,duracion_semestres,creditos_totales,estado_carrera
+1,Ingeniería en Informática,Tecnología,Santiago,8,240,activa
+2,Ingeniería en Administración,Negocios,Santiago,8,240,activa
+3,Técnico en Enfermería,Salud,Santiago,5,150,activa
+4,Técnico en Educación Parvularia,Educación,Concepción,5,150,activa
+5,Ingeniería en Logística,Negocios,Concepción,8,240,activa
+6,Técnico en Administración,Negocios,Viña del Mar,5,150,activa

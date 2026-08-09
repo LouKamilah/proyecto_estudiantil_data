@@ -1,0 +1,196 @@
+id_asignatura,id_carrera,codigo_asignatura,nombre_asignatura,nivel_sugerido,creditos,tipo_asignatura,estado_asignatura
+1,1,C10101,Ingeniería en Informática - Módulo 1.1,1,6,obligatoria,activa
+2,1,C10102,Ingeniería en Informática - Módulo 1.2,1,6,obligatoria,activa
+3,1,C10103,Ingeniería en Informática - Módulo 1.3,1,6,obligatoria,activa
+4,1,C10104,Ingeniería en Informática - Módulo 1.4,1,6,obligatoria,activa
+5,1,C10105,Ingeniería en Informática - Módulo 1.5,1,6,electiva,activa
+6,1,C10201,Ingeniería en Informática - Módulo 2.1,2,6,obligatoria,activa
+7,1,C10202,Ingeniería en Informática - Módulo 2.2,2,6,obligatoria,activa
+8,1,C10203,Ingeniería en Informática - Módulo 2.3,2,6,obligatoria,activa
+9,1,C10204,Ingeniería en Informática - Módulo 2.4,2,6,obligatoria,activa
+10,1,C10205,Ingeniería en Informática - Módulo 2.5,2,6,electiva,activa
+11,1,C10301,Ingeniería en Informática - Módulo 3.1,3,6,obligatoria,activa
+12,1,C10302,Ingeniería en Informática - Módulo 3.2,3,6,obligatoria,activa
+13,1,C10303,Ingeniería en Informática - Módulo 3.3,3,6,obligatoria,activa
+14,1,C10304,Ingeniería en Informática - Módulo 3.4,3,6,obligatoria,activa
+15,1,C10305,Ingeniería en Informática - Módulo 3.5,3,6,electiva,activa
+16,1,C10401,Ingeniería en Informática - Módulo 4.1,4,6,obligatoria,activa
+17,1,C10402,Ingeniería en Informática - Módulo 4.2,4,6,obligatoria,activa
+18,1,C10403,Ingeniería en Informática - Módulo 4.3,4,6,obligatoria,activa
+19,1,C10404,Ingeniería en Informática - Módulo 4.4,4,6,obligatoria,activa
+20,1,C10405,Ingeniería en Informática - Módulo 4.5,4,6,electiva,activa
+21,1,C10501,Ingeniería en Informática - Módulo 5.1,5,6,obligatoria,activa
+22,1,C10502,Ingeniería en Informática - Módulo 5.2,5,6,obligatoria,activa
+23,1,C10503,Ingeniería en Informática - Módulo 5.3,5,6,obligatoria,activa
+24,1,C10504,Ingeniería en Informática - Módulo 5.4,5,6,obligatoria,activa
+25,1,C10505,Ingeniería en Informática - Módulo 5.5,5,6,electiva,activa
+26,1,C10601,Ingeniería en Informática - Módulo 6.1,6,6,obligatoria,activa
+27,1,C10602,Ingeniería en Informática - Módulo 6.2,6,6,obligatoria,activa
+28,1,C10603,Ingeniería en Informática - Módulo 6.3,6,6,obligatoria,activa
+29,1,C10604,Ingeniería en Informática - Módulo 6.4,6,6,obligatoria,activa
+30,1,C10605,Ingeniería en Informática - Módulo 6.5,6,6,electiva,activa
+31,1,C10701,Ingeniería en Informática - Módulo 7.1,7,6,obligatoria,activa
+32,1,C10702,Ingeniería en Informática - Módulo 7.2,7,6,obligatoria,activa
+33,1,C10703,Ingeniería en Informática - Módulo 7.3,7,6,obligatoria,activa
+34,1,C10704,Ingeniería en Informática - Módulo 7.4,7,6,obligatoria,activa
+35,1,C10705,Ingeniería en Informática - Módulo 7.5,7,6,electiva,activa
+36,1,C10801,Ingeniería en Informática - Módulo 8.1,8,6,obligatoria,activa
+37,1,C10802,Ingeniería en Informática - Módulo 8.2,8,6,obligatoria,activa
+38,1,C10803,Ingeniería en Informática - Módulo 8.3,8,6,obligatoria,activa
+39,1,C10804,Ingeniería en Informática - Módulo 8.4,8,6,obligatoria,activa
+40,1,C10805,Ingeniería en Informática - Módulo 8.5,8,6,electiva,activa
+41,2,C20101,Ingeniería en Administración - Módulo 1.1,1,6,obligatoria,activa
+42,2,C20102,Ingeniería en Administración - Módulo 1.2,1,6,obligatoria,activa
+43,2,C20103,Ingeniería en Administración - Módulo 1.3,1,6,obligatoria,activa
+44,2,C20104,Ingeniería en Administración - Módulo 1.4,1,6,obligatoria,activa
+45,2,C20105,Ingeniería en Administración - Módulo 1.5,1,6,electiva,activa
+46,2,C20201,Ingeniería en Administración - Módulo 2.1,2,6,obligatoria,activa
+47,2,C20202,Ingeniería en Administración - Módulo 2.2,2,6,obligatoria,activa
+48,2,C20203,Ingeniería en Administración - Módulo 2.3,2,6,obligatoria,activa
+49,2,C20204,Ingeniería en Administración - Módulo 2.4,2,6,obligatoria,activa
+50,2,C20205,Ingeniería en Administración - Módulo 2.5,2,6,electiva,activa
+51,2,C20301,Ingeniería en Administración - Módulo 3.1,3,6,obligatoria,activa
+52,2,C20302,Ingeniería en Administración - Módulo 3.2,3,6,obligatoria,activa
+53,2,C20303,Ingeniería en Administración - Módulo 3.3,3,6,obligatoria,activa
+54,2,C20304,Ingeniería en Administración - Módulo 3.4,3,6,obligatoria,activa
+55,2,C20305,Ingeniería en Administración - Módulo 3.5,3,6,electiva,activa
+56,2,C20401,Ingeniería en Administración - Módulo 4.1,4,6,obligatoria,activa
+57,2,C20402,Ingeniería en Administración - Módulo 4.2,4,6,obligatoria,activa
+58,2,C20403,Ingeniería en Administración - Módulo 4.3,4,6,obligatoria,activa
+59,2,C20404,Ingeniería en Administración - Módulo 4.4,4,6,obligatoria,activa
+60,2,C20405,Ingeniería en Administración - Módulo 4.5,4,6,electiva,activa
+61,2,C20501,Ingeniería en Administración - Módulo 5.1,5,6,obligatoria,activa
+62,2,C20502,Ingeniería en Administración - Módulo 5.2,5,6,obligatoria,activa
+63,2,C20503,Ingeniería en Administración - Módulo 5.3,5,6,obligatoria,activa
+64,2,C20504,Ingeniería en Administración - Módulo 5.4,5,6,obligatoria,activa
+65,2,C20505,Ingeniería en Administración - Módulo 5.5,5,6,electiva,activa
+66,2,C20601,Ingeniería en Administración - Módulo 6.1,6,6,obligatoria,activa
+67,2,C20602,Ingeniería en Administración - Módulo 6.2,6,6,obligatoria,activa
+68,2,C20603,Ingeniería en Administración - Módulo 6.3,6,6,obligatoria,activa
+69,2,C20604,Ingeniería en Administración - Módulo 6.4,6,6,obligatoria,activa
+70,2,C20605,Ingeniería en Administración - Módulo 6.5,6,6,electiva,activa
+71,2,C20701,Ingeniería en Administración - Módulo 7.1,7,6,obligatoria,activa
+72,2,C20702,Ingeniería en Administración - Módulo 7.2,7,6,obligatoria,activa
+73,2,C20703,Ingeniería en Administración - Módulo 7.3,7,6,obligatoria,activa
+74,2,C20704,Ingeniería en Administración - Módulo 7.4,7,6,obligatoria,activa
+75,2,C20705,Ingeniería en Administración - Módulo 7.5,7,6,electiva,activa
+76,2,C20801,Ingeniería en Administración - Módulo 8.1,8,6,obligatoria,activa
+77,2,C20802,Ingeniería en Administración - Módulo 8.2,8,6,obligatoria,activa
+78,2,C20803,Ingeniería en Administración - Módulo 8.3,8,6,obligatoria,activa
+79,2,C20804,Ingeniería en Administración - Módulo 8.4,8,6,obligatoria,activa
+80,2,C20805,Ingeniería en Administración - Módulo 8.5,8,6,electiva,activa
+81,3,C30101,Técnico en Enfermería - Módulo 1.1,1,6,obligatoria,activa
+82,3,C30102,Técnico en Enfermería - Módulo 1.2,1,6,obligatoria,activa
+83,3,C30103,Técnico en Enfermería - Módulo 1.3,1,6,obligatoria,activa
+84,3,C30104,Técnico en Enfermería - Módulo 1.4,1,6,obligatoria,activa
+85,3,C30105,Técnico en Enfermería - Módulo 1.5,1,6,electiva,activa
+86,3,C30201,Técnico en Enfermería - Módulo 2.1,2,6,obligatoria,activa
+87,3,C30202,Técnico en Enfermería - Módulo 2.2,2,6,obligatoria,activa
+88,3,C30203,Técnico en Enfermería - Módulo 2.3,2,6,obligatoria,activa
+89,3,C30204,Técnico en Enfermería - Módulo 2.4,2,6,obligatoria,activa
+90,3,C30205,Técnico en Enfermería - Módulo 2.5,2,6,electiva,activa
+91,3,C30301,Técnico en Enfermería - Módulo 3.1,3,6,obligatoria,activa
+92,3,C30302,Técnico en Enfermería - Módulo 3.2,3,6,obligatoria,activa
+93,3,C30303,Técnico en Enfermería - Módulo 3.3,3,6,obligatoria,activa
+94,3,C30304,Técnico en Enfermería - Módulo 3.4,3,6,obligatoria,activa
+95,3,C30305,Técnico en Enfermería - Módulo 3.5,3,6,electiva,activa
+96,3,C30401,Técnico en Enfermería - Módulo 4.1,4,6,obligatoria,activa
+97,3,C30402,Técnico en Enfermería - Módulo 4.2,4,6,obligatoria,activa
+98,3,C30403,Técnico en Enfermería - Módulo 4.3,4,6,obligatoria,activa
+99,3,C30404,Técnico en Enfermería - Módulo 4.4,4,6,obligatoria,activa
+100,3,C30405,Técnico en Enfermería - Módulo 4.5,4,6,electiva,activa
+101,3,C30501,Técnico en Enfermería - Módulo 5.1,5,6,obligatoria,activa
+102,3,C30502,Técnico en Enfermería - Módulo 5.2,5,6,obligatoria,activa
+103,3,C30503,Técnico en Enfermería - Módulo 5.3,5,6,obligatoria,activa
+104,3,C30504,Técnico en Enfermería - Módulo 5.4,5,6,obligatoria,activa
+105,3,C30505,Técnico en Enfermería - Módulo 5.5,5,6,electiva,activa
+106,4,C40101,Técnico en Educación Parvularia - Módulo 1.1,1,6,obligatoria,activa
+107,4,C40102,Técnico en Educación Parvularia - Módulo 1.2,1,6,obligatoria,activa
+108,4,C40103,Técnico en Educación Parvularia - Módulo 1.3,1,6,obligatoria,activa
+109,4,C40104,Técnico en Educación Parvularia - Módulo 1.4,1,6,obligatoria,activa
+110,4,C40105,Técnico en Educación Parvularia - Módulo 1.5,1,6,electiva,activa
+111,4,C40201,Técnico en Educación Parvularia - Módulo 2.1,2,6,obligatoria,activa
+112,4,C40202,Técnico en Educación Parvularia - Módulo 2.2,2,6,obligatoria,activa
+113,4,C40203,Técnico en Educación Parvularia - Módulo 2.3,2,6,obligatoria,activa
+114,4,C40204,Técnico en Educación Parvularia - Módulo 2.4,2,6,obligatoria,activa
+115,4,C40205,Técnico en Educación Parvularia - Módulo 2.5,2,6,electiva,activa
+116,4,C40301,Técnico en Educación Parvularia - Módulo 3.1,3,6,obligatoria,activa
+117,4,C40302,Técnico en Educación Parvularia - Módulo 3.2,3,6,obligatoria,activa
+118,4,C40303,Técnico en Educación Parvularia - Módulo 3.3,3,6,obligatoria,activa
+119,4,C40304,Técnico en Educación Parvularia - Módulo 3.4,3,6,obligatoria,activa
+120,4,C40305,Técnico en Educación Parvularia - Módulo 3.5,3,6,electiva,activa
+121,4,C40401,Técnico en Educación Parvularia - Módulo 4.1,4,6,obligatoria,activa
+122,4,C40402,Técnico en Educación Parvularia - Módulo 4.2,4,6,obligatoria,activa
+123,4,C40403,Técnico en Educación Parvularia - Módulo 4.3,4,6,obligatoria,activa
+124,4,C40404,Técnico en Educación Parvularia - Módulo 4.4,4,6,obligatoria,activa
+125,4,C40405,Técnico en Educación Parvularia - Módulo 4.5,4,6,electiva,activa
+126,4,C40501,Técnico en Educación Parvularia - Módulo 5.1,5,6,obligatoria,activa
+127,4,C40502,Técnico en Educación Parvularia - Módulo 5.2,5,6,obligatoria,activa
+128,4,C40503,Técnico en Educación Parvularia - Módulo 5.3,5,6,obligatoria,activa
+129,4,C40504,Técnico en Educación Parvularia - Módulo 5.4,5,6,obligatoria,activa
+130,4,C40505,Técnico en Educación Parvularia - Módulo 5.5,5,6,electiva,activa
+131,5,C50101,Ingeniería en Logística - Módulo 1.1,1,6,obligatoria,activa
+132,5,C50102,Ingeniería en Logística - Módulo 1.2,1,6,obligatoria,activa
+133,5,C50103,Ingeniería en Logística - Módulo 1.3,1,6,obligatoria,activa
+134,5,C50104,Ingeniería en Logística - Módulo 1.4,1,6,obligatoria,activa
+135,5,C50105,Ingeniería en Logística - Módulo 1.5,1,6,electiva,activa
+136,5,C50201,Ingeniería en Logística - Módulo 2.1,2,6,obligatoria,activa
+137,5,C50202,Ingeniería en Logística - Módulo 2.2,2,6,obligatoria,activa
+138,5,C50203,Ingeniería en Logística - Módulo 2.3,2,6,obligatoria,activa
+139,5,C50204,Ingeniería en Logística - Módulo 2.4,2,6,obligatoria,activa
+140,5,C50205,Ingeniería en Logística - Módulo 2.5,2,6,electiva,activa
+141,5,C50301,Ingeniería en Logística - Módulo 3.1,3,6,obligatoria,activa
+142,5,C50302,Ingeniería en Logística - Módulo 3.2,3,6,obligatoria,activa
+143,5,C50303,Ingeniería en Logística - Módulo 3.3,3,6,obligatoria,activa
+144,5,C50304,Ingeniería en Logística - Módulo 3.4,3,6,obligatoria,activa
+145,5,C50305,Ingeniería en Logística - Módulo 3.5,3,6,electiva,activa
+146,5,C50401,Ingeniería en Logística - Módulo 4.1,4,6,obligatoria,activa
+147,5,C50402,Ingeniería en Logística - Módulo 4.2,4,6,obligatoria,activa
+148,5,C50403,Ingeniería en Logística - Módulo 4.3,4,6,obligatoria,activa
+149,5,C50404,Ingeniería en Logística - Módulo 4.4,4,6,obligatoria,activa
+150,5,C50405,Ingeniería en Logística - Módulo 4.5,4,6,electiva,activa
+151,5,C50501,Ingeniería en Logística - Módulo 5.1,5,6,obligatoria,activa
+152,5,C50502,Ingeniería en Logística - Módulo 5.2,5,6,obligatoria,activa
+153,5,C50503,Ingeniería en Logística - Módulo 5.3,5,6,obligatoria,activa
+154,5,C50504,Ingeniería en Logística - Módulo 5.4,5,6,obligatoria,activa
+155,5,C50505,Ingeniería en Logística - Módulo 5.5,5,6,electiva,activa
+156,5,C50601,Ingeniería en Logística - Módulo 6.1,6,6,obligatoria,activa
+157,5,C50602,Ingeniería en Logística - Módulo 6.2,6,6,obligatoria,activa
+158,5,C50603,Ingeniería en Logística - Módulo 6.3,6,6,obligatoria,activa
+159,5,C50604,Ingeniería en Logística - Módulo 6.4,6,6,obligatoria,activa
+160,5,C50605,Ingeniería en Logística - Módulo 6.5,6,6,electiva,activa
+161,5,C50701,Ingeniería en Logística - Módulo 7.1,7,6,obligatoria,activa
+162,5,C50702,Ingeniería en Logística - Módulo 7.2,7,6,obligatoria,activa
+163,5,C50703,Ingeniería en Logística - Módulo 7.3,7,6,obligatoria,activa
+164,5,C50704,Ingeniería en Logística - Módulo 7.4,7,6,obligatoria,activa
+165,5,C50705,Ingeniería en Logística - Módulo 7.5,7,6,electiva,activa
+166,5,C50801,Ingeniería en Logística - Módulo 8.1,8,6,obligatoria,activa
+167,5,C50802,Ingeniería en Logística - Módulo 8.2,8,6,obligatoria,activa
+168,5,C50803,Ingeniería en Logística - Módulo 8.3,8,6,obligatoria,activa
+169,5,C50804,Ingeniería en Logística - Módulo 8.4,8,6,obligatoria,activa
+170,5,C50805,Ingeniería en Logística - Módulo 8.5,8,6,electiva,activa
+171,6,C60101,Técnico en Administración - Módulo 1.1,1,6,obligatoria,activa
+172,6,C60102,Técnico en Administración - Módulo 1.2,1,6,obligatoria,activa
+173,6,C60103,Técnico en Administración - Módulo 1.3,1,6,obligatoria,activa
+174,6,C60104,Técnico en Administración - Módulo 1.4,1,6,obligatoria,activa
+175,6,C60105,Técnico en Administración - Módulo 1.5,1,6,electiva,activa
+176,6,C60201,Técnico en Administración - Módulo 2.1,2,6,obligatoria,activa
+177,6,C60202,Técnico en Administración - Módulo 2.2,2,6,obligatoria,activa
+178,6,C60203,Técnico en Administración - Módulo 2.3,2,6,obligatoria,activa
+179,6,C60204,Técnico en Administración - Módulo 2.4,2,6,obligatoria,activa
+180,6,C60205,Técnico en Administración - Módulo 2.5,2,6,electiva,activa
+181,6,C60301,Técnico en Administración - Módulo 3.1,3,6,obligatoria,activa
+182,6,C60302,Técnico en Administración - Módulo 3.2,3,6,obligatoria,activa
+183,6,C60303,Técnico en Administración - Módulo 3.3,3,6,obligatoria,activa
+184,6,C60304,Técnico en Administración - Módulo 3.4,3,6,obligatoria,activa
+185,6,C60305,Técnico en Administración - Módulo 3.5,3,6,electiva,activa
+186,6,C60401,Técnico en Administración - Módulo 4.1,4,6,obligatoria,activa
+187,6,C60402,Técnico en Administración - Módulo 4.2,4,6,obligatoria,activa
+188,6,C60403,Técnico en Administración - Módulo 4.3,4,6,obligatoria,activa
+189,6,C60404,Técnico en Administración - Módulo 4.4,4,6,obligatoria,activa
+190,6,C60405,Técnico en Administración - Módulo 4.5,4,6,electiva,activa
+191,6,C60501,Técnico en Administración - Módulo 5.1,5,6,obligatoria,activa
+192,6,C60502,Técnico en Administración - Módulo 5.2,5,6,obligatoria,activa
+193,6,C60503,Técnico en Administración - Módulo 5.3,5,6,obligatoria,activa
+194,6,C60504,Técnico en Administración - Módulo 5.4,5,6,obligatoria,activa
+195,6,C60505,Técnico en Administración - Módulo 5.5,5,6,electiva,activa
